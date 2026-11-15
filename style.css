@@ -472,3 +472,9 @@ h2 { margin-top: 2px; font-size: 21px; font-weight: 650; letter-spacing: -.025em
   .gemma-fields > div { flex: 1 1 100%; }
   .gemma-fields :is(input, select) { width: 100%; }
 }
+
+.trend-card { margin-bottom: 1rem; }
+#trend-variable { font: inherit; max-width: 100%; min-height: 44px; }
+#trend-plot { display: block; width: 100%; height: auto; color: inherit; }
+#trend-results { display: flex; flex-wrap: wrap; gap: .5rem 1rem; margin-block: .75rem; }
+#trend-results span { font-variant-numeric: tabular-nums; }

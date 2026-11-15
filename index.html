@@ -6,10 +6,11 @@
   <meta name="description" content="Satellite observations, seasonal charts and forecasts for the Chirchik basin.">
   <title>Snow2Crop · Chirchik basin</title>
   <link rel="icon" type="image/svg+xml" href="./assets/logo.svg">
-  <link rel="stylesheet" href="./style.css?v=responsive-1">
+  <link rel="stylesheet" href="./style.css?v=trends-1">
   <script src="./translations.js?v=responsive-1" defer></script>
   <script src="./feedback.js" defer></script>
   <script src="./app.js?v=field-release" defer></script>
+  <script src="./trends.js?v=1" defer></script>
   <script src="./gemma.js?v=field-release" defer></script>
 </head>
 <body>
@@ -100,6 +101,17 @@
     </section>
 
     <section id="charts" aria-labelledby="charts-heading" hidden>
+      <article class="card trend-card" id="power-trends" hidden>
+        <header class="card-heading"><h2 id="trend-title">Earth system trends</h2><span class="badge">NASA POWER</span></header>
+        <div class="chart">
+          <label><span id="trend-variable-label">Variable</span> <select id="trend-variable"></select></label>
+          <p id="trend-location"></p>
+          <div id="trend-results" aria-live="polite"></div>
+          <svg id="trend-plot" viewBox="0 0 760 245" role="img" aria-labelledby="trend-title trend-location"></svg>
+          <p id="trend-method"></p>
+          <a href="https://power.larc.nasa.gov/docs/services/api/temporal/daily/">NASA POWER Daily API</a>
+        </div>
+      </article>
       <article class="card">
         <header class="card-heading"><div><h2 id="charts-heading" data-text="precip">Snow-forming precipitation</h2></div><span class="badge" data-text="chartUnit">mm · since 1 October</span></header>
         <div class="chart">

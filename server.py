@@ -43,9 +43,9 @@ LANGUAGES = {'en': 'English', 'ru': 'Russian', 'uz': 'Uzbek'}
 STATIC = {
     '/': 'index.html', '/index.html': 'index.html',
     **{f'/{path}': path for path in (
-        'style.css', 'translations.js', 'feedback.js', 'app.js', 'gemma.js',
+        'style.css', 'translations.js', 'feedback.js', 'app.js', 'gemma.js', 'trends.js',
         'assets/logo.svg', 'assets/map/2009-08-24.jpg',
-        'data/observations.json', 'data/forecasts.json', 'data/daily-map.json', 'data/clear-imagery.json',
+        'data/observations.json', 'data/forecasts.json', 'data/daily-map.json', 'data/clear-imagery.json', 'data/power-trends.json',
     )},
 }
 
@@ -120,7 +120,7 @@ def water_assessment(stamp, language):
                 'Toshkent: suv tanqisligini baholash uchun ta’minot va iste’mol ma’lumotlari kerak.')
     status = 'low inflow is possible' if low else 'estimated inflow is at or above the low-flow threshold'
     return (f'Chirchik → Charvak, {target}. Historical estimate using data through the end of {month}: {status}. '
-            f'Forecast: {forecast:g} m³/s. Low-flow threshold: {threshold:g} m³/s. '
+            f'Historical estimate: {forecast:g} m³/s. Low-flow threshold: {threshold:g} m³/s. '
             'Tashkent: water supply and demand data are needed to assess a shortage.')
 
 
@@ -273,7 +273,7 @@ def answer(payload):
         if intent == 'INFLOW' and not stamp:
             return {
                 'ru': 'Укажите дату в месяце, на который нужен архивный прогноз притока в Чарвак.',
-                'en': 'Select a date in the month you want to check in the Charvak inflow forecast archive.',
+                'en': 'Select a date in the month you want to check in the Charvak inflow historical archive.',
                 'uz': 'Chorvoq suv kirimi arxiv prognozi uchun kerakli oydagi sanani tanlang.',
             }[language]
         if intent == 'INFLOW':

@@ -1,0 +1,278 @@
+{
+  "coordinates": [
+    70.03,
+    41.63
+  ],
+  "rows": [
+    {
+      "year": 1981,
+      "temperature": 7.5863,
+      "precipitation": 540.74,
+      "coldPrecipitation": 257.64
+    },
+    {
+      "year": 1982,
+      "temperature": 7.3711,
+      "precipitation": 258.4,
+      "coldPrecipitation": 189.41
+    },
+    {
+      "year": 1983,
+      "temperature": 8.6658,
+      "precipitation": 193.46,
+      "coldPrecipitation": 107.9
+    },
+    {
+      "year": 1984,
+      "temperature": 6.8993,
+      "precipitation": 262.92,
+      "coldPrecipitation": 148.36
+    },
+    {
+      "year": 1985,
+      "temperature": 8.0668,
+      "precipitation": 256.18,
+      "coldPrecipitation": 176.19
+    },
+    {
+      "year": 1986,
+      "temperature": 8.2247,
+      "precipitation": 222.31,
+      "coldPrecipitation": 123.41
+    },
+    {
+      "year": 1987,
+      "temperature": 8.1263,
+      "precipitation": 222.21,
+      "coldPrecipitation": 96.68
+    },
+    {
+      "year": 1988,
+      "temperature": 9.2222,
+      "precipitation": 161.02,
+      "coldPrecipitation": 88.0
+    },
+    {
+      "year": 1989,
+      "temperature": 7.6878,
+      "precipitation": 187.38,
+      "coldPrecipitation": 102.17
+    },
+    {
+      "year": 1990,
+      "temperature": 8.2637,
+      "precipitation": 385.3,
+      "coldPrecipitation": 163.87
+    },
+    {
+      "year": 1991,
+      "temperature": 7.567,
+      "precipitation": 422.46,
+      "coldPrecipitation": 255.89
+    },
+    {
+      "year": 1992,
+      "temperature": 7.2101,
+      "precipitation": 409.09,
+      "coldPrecipitation": 192.32
+    },
+    {
+      "year": 1993,
+      "temperature": 6.2568,
+      "precipitation": 676.83,
+      "coldPrecipitation": 373.46
+    },
+    {
+      "year": 1994,
+      "temperature": 6.9858,
+      "precipitation": 513.48,
+      "coldPrecipitation": 242.32
+    },
+    {
+      "year": 1995,
+      "temperature": 7.7268,
+      "precipitation": 272.4,
+      "coldPrecipitation": 132.74
+    },
+    {
+      "year": 1996,
+      "temperature": 6.6439,
+      "precipitation": 379.4,
+      "coldPrecipitation": 193.08
+    },
+    {
+      "year": 1997,
+      "temperature": 7.8447,
+      "precipitation": 412.79,
+      "coldPrecipitation": 213.09
+    },
+    {
+      "year": 1998,
+      "temperature": 7.4841,
+      "precipitation": 556.52,
+      "coldPrecipitation": 282.0
+    },
+    {
+      "year": 1999,
+      "temperature": 7.5936,
+      "precipitation": 491.82,
+      "coldPrecipitation": 260.66
+    },
+    {
+      "year": 2000,
+      "temperature": 7.7634,
+      "precipitation": 374.89,
+      "coldPrecipitation": 227.17
+    },
+    {
+      "year": 2001,
+      "temperature": 8.0619,
+      "precipitation": 412.66,
+      "coldPrecipitation": 257.0
+    },
+    {
+      "year": 2002,
+      "temperature": 8.0961,
+      "precipitation": 525.22,
+      "coldPrecipitation": 255.64
+    },
+    {
+      "year": 2003,
+      "temperature": 7.2582,
+      "precipitation": 601.16,
+      "coldPrecipitation": 281.91
+    },
+    {
+      "year": 2004,
+      "temperature": 8.4484,
+      "precipitation": 452.17,
+      "coldPrecipitation": 235.45
+    },
+    {
+      "year": 2005,
+      "temperature": 7.9661,
+      "precipitation": 434.88,
+      "coldPrecipitation": 288.56
+    },
+    {
+      "year": 2006,
+      "temperature": 8.4847,
+      "precipitation": 466.91,
+      "coldPrecipitation": 229.82
+    },
+    {
+      "year": 2007,
+      "temperature": 8.2275,
+      "precipitation": 453.45,
+      "coldPrecipitation": 209.81
+    },
+    {
+      "year": 2008,
+      "temperature": 7.9393,
+      "precipitation": 378.05,
+      "coldPrecipitation": 218.69
+    },
+    {
+      "year": 2009,
+      "temperature": 7.4795,
+      "precipitation": 563.7,
+      "coldPrecipitation": 310.42
+    },
+    {
+      "year": 2010,
+      "temperature": 8.6721,
+      "precipitation": 553.7,
+      "coldPrecipitation": 262.77
+    },
+    {
+      "year": 2011,
+      "temperature": 7.4682,
+      "precipitation": 573.83,
+      "coldPrecipitation": 401.54
+    },
+    {
+      "year": 2012,
+      "temperature": 7.0009,
+      "precipitation": 399.94,
+      "coldPrecipitation": 284.68
+    },
+    {
+      "year": 2013,
+      "temperature": 8.4898,
+      "precipitation": 406.38,
+      "coldPrecipitation": 228.77
+    },
+    {
+      "year": 2014,
+      "temperature": 7.7173,
+      "precipitation": 294.77,
+      "coldPrecipitation": 170.33
+    },
+    {
+      "year": 2015,
+      "temperature": 8.1524,
+      "precipitation": 507.31,
+      "coldPrecipitation": 320.58
+    },
+    {
+      "year": 2016,
+      "temperature": 8.8438,
+      "precipitation": 536.03,
+      "coldPrecipitation": 257.34
+    },
+    {
+      "year": 2017,
+      "temperature": 8.1015,
+      "precipitation": 504.73,
+      "coldPrecipitation": 324.63
+    },
+    {
+      "year": 2018,
+      "temperature": 8.1015,
+      "precipitation": 478.05,
+      "coldPrecipitation": 283.41
+    },
+    {
+      "year": 2019,
+      "temperature": 8.338,
+      "precipitation": 441.75,
+      "coldPrecipitation": 200.12
+    },
+    {
+      "year": 2020,
+      "temperature": 7.3246,
+      "precipitation": 428.37,
+      "coldPrecipitation": 245.76
+    },
+    {
+      "year": 2021,
+      "temperature": 8.561,
+      "precipitation": 450.75,
+      "coldPrecipitation": 250.11
+    },
+    {
+      "year": 2022,
+      "temperature": 8.5383,
+      "precipitation": 646.12,
+      "coldPrecipitation": 348.98
+    },
+    {
+      "year": 2023,
+      "temperature": 8.7739,
+      "precipitation": 469.04,
+      "coldPrecipitation": 246.4
+    },
+    {
+      "year": 2024,
+      "temperature": 7.6876,
+      "precipitation": 575.22,
+      "coldPrecipitation": 289.98
+    },
+    {
+      "year": 2025,
+      "temperature": 9.318,
+      "precipitation": 446.27,
+      "coldPrecipitation": 289.24
+    }
+  ]
+}

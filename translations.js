@@ -32,7 +32,7 @@ const translations = {
 
   "snowForecastMode": ["Snow cover forecast", "Прогноз снежного покрова", "Qor qoplami prognozi"],
   "gemmaMode": ["Task", "Задача", "Vazifa"],
-  "charvakMode": ["Charvak inflow", "Приток в Чарвак", "Chorvoqqa suv kirimi"],
+  "charvakMode": ["Historical Charvak inflow estimate", "Историческая оценка притока в Чарвак", "Chorvoq suv kirimining tarixiy bahosi"],
   "charvakHint": ["Select a date in the historical archive (1990–2015). The estimate uses data through the end of that month.", "Выбери дату в историческом архиве (1990–2015). Расчёт использует данные до конца выбранного месяца.", "Tarixiy arxivdan sana tanlang (1990–2015). Hisob shu oyning oxirigacha bo‘lgan ma’lumotlarga asoslanadi."],
   "charvakDate": ["Archive date", "Дата в архиве", "Arxiv sanasi"],
 

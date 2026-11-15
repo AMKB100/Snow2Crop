@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Satellite observations, seasonal charts and forecasts for the Chirchik basin.">
+  <title>Snow2Crop · Chirchik basin</title>
+  <link rel="icon" type="image/svg+xml" href="./assets/logo.svg">
+  <link rel="stylesheet" href="./style.css?v=responsive-1">
+  <script src="./translations.js?v=responsive-1" defer></script>
+  <script src="./feedback.js" defer></script>
+  <script src="./app.js?v=field-release" defer></script>
+  <script src="./gemma.js?v=field-release" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="#map"><img class="mark" src="./assets/logo.svg" width="34" height="34" alt=""> <span>Snow2Crop</span></a>
+      <nav aria-label="Main navigation" data-label="navigation">
+        <a href="#map" aria-current="page" data-text="map">Map</a>
+        <a href="#charts" data-text="charts">Charts</a>
+        <a href="#forecast" data-text="forecast">AI Forecast</a>
+        <a href="#settings" data-text="settings">Settings</a>
+      </nav>
+    </div>
+  </header>
+  <main class="shell">
+    <div class="intro">
+      <h1 data-text="title">Chirchik snow monitor</h1>
+    </div>
+    <div class="toolbar" id="date-toolbar">
+      <div class="timeline-header">
+        <div class="timeline-year">
+          <label class="eyebrow upper" for="archive-year" data-text="year">Year</label>
+          <select id="archive-year" disabled></select>
+        </div>
+        <div class="date-controls">
+          <select id="archive-mode" aria-label="Date mode" data-label="dateMode" disabled>
+            <option value="monthly" data-text="monthly">Monthly</option>
+            <option value="daily" data-text="daily">Daily archive</option>
+          </select>
+        </div>
+      </div>
+      <div class="month-grid" id="archive-months" role="group" aria-label="Month" data-label="month"></div>
+      <div class="timeline-lower">
+        <div class="timeline-slider">
+          <button id="previous" aria-label="Previous observation" data-label="previous" disabled>←</button>
+          <input id="date-slider" type="range" min="0" max="0" step="1" value="0"
+            aria-label="Observation date slider" data-label="dateSlider" disabled>
+          <button id="next" aria-label="Next observation" data-label="next" disabled>→</button>
+        </div>
+        <div class="timeline-current">
+          <span class="eyebrow upper" data-text="date">OBSERVATION DATE</span>
+          <strong id="date-label">Awaiting data</strong>
+        </div>
+      </div>
+    </div>
+    <p id="data-status" class="data-status" role="status"></p>
+    <div class="recent-imagery" id="recent-imagery">
+      <button id="latest-image" type="button" data-text="latestImage" disabled>Latest clear image</button>
+      <span id="recent-image-status" role="status"></span>
+    </div>
+
+    <section id="map" aria-labelledby="map-heading">
+      <div class="dashboard">
+        <article class="card map-card">
+          <header class="card-heading"><div><h2 id="map-heading" data-text="basin">Chirchik basin</h2></div><span class="badge" id="map-status">Awaiting imagery</span></header>
+          <figure class="map-view">
+            <div class="satellite-frame" id="satellite-frame" hidden>
+              <img id="satellite" hidden alt="Satellite image of the Chirchik basin" data-alt="imageAlt">
+            </div>
+            <div class="map-placeholder" id="map-placeholder">
+              <svg class="map-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+                <path d="M11 4H4v7m17-7h7v7m0 10v7h-7M4 21v7h7"/>
+                <circle cx="16" cy="16" r="5"/><path d="M16 8v4m0 8v4m-8-8h4m8 0h4"/>
+              </svg>
+              <strong id="map-placeholder-text" data-text="awaitImage">Satellite imagery pending</strong>
+            </div>
+          </figure>
+          <footer class="card-footer"><span id="image-source">Planned imagery source · NASA GIBS</span><span id="image-date"></span></footer>
+        </article>
+        <div class="map-side">
+          <aside class="stats" aria-label="Observation summary" data-label="summary">
+            <article class="card metric"><p class="eyebrow upper" data-text="precip">Snow-forming precipitation</p><p class="reading"><span id="snow">—</span> <small data-text="mm">mm</small></p><p id="comparison">Season-to-date total and comparison with previous years.</p></article>
+            <article class="card metric"><p class="eyebrow upper" data-text="temp">Mean air temperature</p><p class="reading"><span id="temperature">—</span> <small>°C</small></p><p data-text="tempHelp">Average from 1 October to the selected date.</p></article>
+            <article class="card metric"><p class="eyebrow upper" data-text="snowCover">Basin snow cover</p><p class="reading"><span id="cover">—</span> <small>%</small></p><p id="coverage">Share of observed, cloud-free basin area covered by snow.</p></article>
+          </aside>
+        <article class="card gemma-card" id="daily-card">
+          <header class="card-heading"><h2 data-text="dailyFresh">Latest satellite and weather</h2></header>
+          <div class="daily-layout">
+            <img id="daily-photo" width="319" height="148" data-alt="imageAlt" alt="" hidden>
+            <div class="daily-details">
+              <p id="daily-status" role="status"></p>
+              <p id="daily-weather"></p>
+            </div>
+          </div>
+        </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="charts" aria-labelledby="charts-heading" hidden>
+      <article class="card">
+        <header class="card-heading"><div><h2 id="charts-heading" data-text="precip">Snow-forming precipitation</h2></div><span class="badge" data-text="chartUnit">mm · since 1 October</span></header>
+        <div class="chart">
+          <div class="legend"><span><i></i> <span data-text="selectedSeason">Selected season</span></span><span><i></i> <span data-text="average">Historical average</span></span></div>
+          <div id="chart-area" class="chart-area"><p id="chart-empty" data-text="chartPending">Seasonal series pending</p><svg id="chart-svg" hidden role="img" aria-label="Accumulated precipitation by date" data-label="chartAlt"></svg></div>
+          <div id="chart-dates" class="chart-dates"></div>
+        </div>
+        <footer class="card-footer" data-text="chartHelp">Precipitation accumulated on days with mean air temperature below +2 °C.</footer>
+      </article>
+    </section>
+
+    <section id="forecast" aria-labelledby="gemma-heading" hidden>
+      <div class="forecast-layout">
+      <article class="card gemma-card">
+        <header class="card-heading"><h2 id="gemma-heading" data-text="myField">Water for my field</h2></header>
+        <form id="gemma-form" class="gemma-form">
+          <p data-text="gemmaHint">For a snow estimate, attach a satellite image of the Chirchik area and enter its date.</p>
+          <div id="field-location-group">
+            <label for="field-location" data-text="fieldLocation">Where is your field?</label>
+            <input id="field-location" type="text" placeholder="41.41, 69.45" maxlength="2048" aria-describedby="field-location-help" autocomplete="off">
+            <p id="field-location-help" data-text="fieldLocationHelp">Open your field in a map app and copy its coordinates. Leave the date empty for tomorrow.</p>
+          </div>
+          <details id="field-photo-group" hidden>
+            <summary data-text="fieldOptions">Choose another date or add a photo</summary>
+            <div id="field-date-slot"></div>
+            <label for="field-photo" data-text="fieldPhoto">Field photo (optional)</label>
+            <input id="field-photo" type="file" accept="image/jpeg,image/png,image/webp">
+            <p data-text="fieldPhotoHelp">The photo stays in your browser. The forecast uses the field coordinates.</p>
+            <img id="field-photo-preview" alt="" hidden>
+          </details>
+          <p id="charvak-hint" data-text="charvakHint" hidden>Select a month in the historical archive (1990–2015). The estimate uses data through the end of that month.</p>
+          <p id="snow-stock-hint" data-text="snowStockHint" hidden></p>
+          <div id="snow-footprint-field" hidden><label for="snow-footprint" data-text="snowFootprint"></label>
+            <input id="snow-footprint" type="number" min="0.01" max="30000" step="any"></div>
+          <label for="gemma-question" data-text="gemmaQuestion">Question</label>
+          <textarea id="gemma-question" rows="3" maxlength="1500" required></textarea>
+          <button id="field-demo" type="button" data-text="fieldDemo" hidden>Forecast for tomorrow</button>
+          <div class="gemma-fields">
+            <div id="gemma-image-field"><label for="gemma-image" data-text="gemmaImage">Satellite image</label>
+              <input id="gemma-image" type="file" accept="image/jpeg,image/png,image/webp"></div>
+            <div id="forecast-date-slot"><div id="forecast-date-group"><label id="gemma-date-label" for="gemma-date" data-text="gemmaDate">Image date</label>
+              <input id="gemma-date" type="date"></div></div>
+          </div>
+          <button id="gemma-submit" type="submit" data-text="gemmaSend">Ask</button>
+          <p id="gemma-status" role="status"></p>
+          <output id="gemma-answer" aria-live="polite" hidden></output>
+          <details class="forecast-tools"><summary data-text="forecastTools">Other forecasts and AI chat</summary>
+            <div><label for="gemma-mode" data-text="gemmaMode">Task</label>
+              <select id="gemma-mode"><option value="field-check" data-text="myField">Water for my field</option><option value="gemma" data-text="gemmaTitle">Ask AI</option>
+                <option value="snow-forecast" data-text="snowForecastMode">Snow cover forecast</option>
+                <option value="snow-stock" data-text="snowStockMode">Snow water estimate</option>
+                <option value="field-delivery" data-text="fieldDeliveryMode">Field delivery scenario</option>
+                <option value="charvak" data-text="charvakMode">Charvak inflow</option></select></div>
+          </details>
+        </form>
+      </article>
+      <details class="forecast-side"><summary data-text="regionalForecasts">Regional observations and forecasts</summary>
+      <article class="card gemma-card">
+        <header class="card-heading"><h2 data-text="balanceTitle">Water delivery to fields</h2></header>
+        <div class="gemma-form">
+          <p id="water-assessment" role="status"></p>
+          <p><a href="https://www.cawater-info.net/daily/2006/november/17_e/index.htm" data-text="fieldSource">Bozsu daily flow bulletin</a></p>
+          <p><a href="https://hydrosolutions.github.io/caham_book/discharge_station_data.html" data-text="waterArchiveSource">Charvak inflow archive</a></p>
+        </div>
+      </article>
+      <article class="card">
+        <header class="card-heading"><div><h2 id="forecast-heading" data-text="outlook">End-of-season outlook</h2></div><span class="badge" id="forecast-status">Awaiting validation</span></header>
+        <div class="forecast-body">
+          <div><p class="eyebrow upper" data-text="forecastTotal">Estimated total by 30 September</p><p class="reading"><span id="forecast-value">—</span> <small data-text="mm">mm</small></p><p id="forecast-range">A range will appear here when available.</p></div>
+          <div class="forecast-note"><strong id="forecast-method">Forecast pending</strong><p id="forecast-note">The forecast will appear after testing on past seasons shows it improves on the historical average.</p><p id="forecast-validation"></p></div>
+        </div>
+        <footer class="card-footer forecast-footer"><span data-text="forecastTarget">Target · total snow-forming precipitation for the season.</span><button id="latest-forecast" type="button" hidden data-text="latestForecast">Latest validated forecast →</button></footer>
+      </article>
+      </details>
+      </div>
+    </section>
+    <section id="settings" aria-labelledby="settings-heading" hidden>
+      <article class="card settings-card">
+        <header class="card-heading"><h2 id="settings-heading" data-text="settings">Settings</h2></header>
+        <div class="settings-options">
+          <label for="theme-choice"><span data-text="theme">Theme</span></label>
+          <select id="theme-choice">
+            <option value="light" data-text="light">Light</option>
+            <option value="dark" data-text="dark">Dark</option>
+            <option value="system" data-text="system">System</option>
+          </select>
+          <label for="language-choice"><span data-text="language">Language</span></label>
+          <select id="language-choice">
+            <option value="en" lang="en">English</option>
+            <option value="ru" lang="ru">Русский</option>
+            <option value="uz" lang="uz-Latn">O‘zbekcha</option>
+          </select>
+          <label for="click-volume"><span data-text="clickVolume">Click volume</span></label>
+          <div class="volume-control">
+            <input id="click-volume" type="range" min="0" max="100" step="1" value="30">
+            <output id="click-volume-value" for="click-volume">30%</output>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
